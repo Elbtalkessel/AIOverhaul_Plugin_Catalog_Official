@@ -40,5 +40,5 @@ settings:
   - key: tag_suffix
     label: Tag Name Suffix
     type: string
-    default: "_AI"
+    default: ""
     description: Suffix appended to backend tag names when creating Stash tags (if not explicitly defined in tag_settings.csv)
