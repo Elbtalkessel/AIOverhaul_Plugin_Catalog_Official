@@ -3,7 +3,7 @@ human_name: Skier AI Tagging
 description: AI tagging of images and videos that generates time-based tags for scenes and markers in stash
 server_link: https://github.com/skier233/nsfw_ai_model_server?tab=readme-ov-file#nsfw-ai-tagging-enhance-your-local-content-organization
 version: 0.3.2
-required_backend: ">=0.5.0"
+required_backend: '>=0.9.3'
 files:
   - service
 depends_on: []
@@ -12,7 +12,7 @@ settings:
   - key: server_url
     label: Remote Service URL
     type: string
-    default: "http://192.168.8.101:9998"
+    default: 'http://192.168.8.101:9998'
     description: Base URL for the Skier tagging backend (e.g. https://example.com)
   - key: path_mappings
     label: Path Mappings
@@ -22,13 +22,23 @@ settings:
         target: /media
         slash_mode: "auto"
     description: Rewrite stash file paths before calling the ai server; each mapping defines a source prefix, replacement, and slash mode
+  - key: edit_tag_list
+    label: Edit tagging configuration
+    type: tag_list_editor
+    default: null
+    description: Edit which tags are enabled or disabled for AI tagging
   - key: apply_ai_tagged_tag
     label: Apply AI_Tagged Tag
     type: boolean
     default: true
     description: Apply the AI_Tagged tag to scenes and images that have been processed by this plugin
+  - key: tagging_frame_interval
+    label: Tagging Frame Interval
+    type: number
+    default: 2.0
+    description: Time interval in seconds at which to generate tags for videos (e.g. a value of 2.0 will generate tags every 2 seconds of video)
   - key: tag_suffix
     label: Tag Name Suffix
     type: string
-    default: ""
+    default: "_AI"
     description: Suffix appended to backend tag names when creating Stash tags (if not explicitly defined in tag_settings.csv)
